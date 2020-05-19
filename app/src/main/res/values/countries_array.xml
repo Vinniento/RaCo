@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="countries_array">
+        <item>Choose your Country…</item>
+        <item>Austria</item>
+        <item>Germany</item>
+        <item>Switzerland</item>
+    </string-array>
+</resources>

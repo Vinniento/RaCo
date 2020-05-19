@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="clubs_array">
+        <item>Choose your Club…</item>
+        <item>First Vienna FC 1894</item>
+        <item>A XIII Auhof Center</item>
+        <item>ASK Elektra</item>
+        <item>Slovan HAC</item>
+        <item>Donau</item>
+        <item>Gerasdorf Stammersdorf</item>
+        <item>WGFM Donaufeld</item>
+        <item>Schwechat SV</item>
+        <item>ASV 13</item>
+        <item>Mannswörth</item>
+        <item>Sportunion Mauer</item>
+        <item>WAF Vorwärts Brigittenau</item>
+        <item>Fav AC</item>
+        <item>FC Stadlau</item>
+        <item>SV Wienerberg 1921</item>
+        <item>Post SV</item>
+    </string-array>
+</resources>

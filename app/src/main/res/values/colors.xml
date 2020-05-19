@@ -6,4 +6,7 @@
     <color name="colorAccent">#DA2A03</color>
     <color name="whiteColor">#FFFFFF</color>
     <color name="NavHeaderColor">#7A7F81</color>
+    <color name="button_green">#1A751E</color>
+    <color name="background_login">#807C7C</color>
+
 </resources>

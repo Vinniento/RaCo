@@ -9,4 +9,16 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_settings_fragment">Hello settings fragment</string>
     <string name="hello_logout_fragment">Hello logout fragment</string>
+    <string name="password">password</string>
+    <string name="login">Login</string>
+    <string name="register_text">Register as coach</string>
+    <string name="text_welcome">"Welcome to RaCo :) "</string>
+    <string name="i_forgot_my_password">Reset my password</string>
+    <string name="email">email</string>
+    <string name="create_your_account">Create your Account</string>
+    <string name="last_name">Last Name</string>
+    <string name="first_name">First Name</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="retype_password">retype password</string>
+
 </resources>

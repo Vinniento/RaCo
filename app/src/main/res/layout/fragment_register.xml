@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="registerViewModel"
+            type="com.example.raco.login.RegisterViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:id="@+id/constraint_layout_register"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_login"
+        tools:context=".login.RegisterFragment">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="262dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Spinner
+                    android:id="@+id/spinner_clubs"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintBottom_toTopOf="@+id/button_register"
+                    app:layout_constraintEnd_toEndOf="@+id/button_register"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/button_register" />
+
+                <Spinner
+                    android:id="@+id/spinner_countries"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toTopOf="@+id/spinner_clubs"
+                    app:layout_constraintEnd_toEndOf="@+id/spinner_clubs"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/spinner_clubs" />
+
+                <TextView
+                    android:id="@+id/text_register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="65dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="65dp"
+                    android:text="@string/create_your_account"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/firstname_register"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.495"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/email_reg"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:autofillHints="@string/email"
+                    android:ems="13"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress"
+                    android:text=""
+                    app:layout_constraintBottom_toTopOf="@+id/password_one"
+                    app:layout_constraintEnd_toEndOf="@+id/password_one"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/password_one" />
+
+                <EditText
+                    android:id="@+id/password_one"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:autofillHints="@string/password"
+                    android:ems="13"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    app:layout_constraintBottom_toTopOf="@+id/password_verify"
+                    app:layout_constraintEnd_toEndOf="@+id/password_verify"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/password_verify" />
+
+                <EditText
+                    android:id="@+id/lastname_register"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:autofillHints=""
+                    android:ems="13"
+                    android:hint="@string/last_name"
+                    android:inputType="textPersonName"
+                    android:text=""
+                    app:layout_constraintBottom_toTopOf="@+id/email_reg"
+                    app:layout_constraintEnd_toEndOf="@+id/email_reg"
+                    app:layout_constraintStart_toStartOf="@+id/email_reg" />
+
+                <Button
+                    android:id="@+id/button_register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="32dp"
+                    android:background="@color/button_green"
+                    android:ems="15"
+                    android:text="@string/register_text"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <EditText
+                    android:id="@+id/firstname_register"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:ems="13"
+                    android:hint="@string/first_name"
+                    android:inputType="textPersonName"
+                    android:text=""
+                    app:layout_constraintBottom_toTopOf="@+id/lastname_register"
+                    app:layout_constraintEnd_toEndOf="@+id/lastname_register"
+                    app:layout_constraintStart_toStartOf="@+id/lastname_register" />
+
+                <EditText
+                    android:id="@+id/password_verify"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:autofillHints=""
+                    android:ems="13"
+                    android:hint="@string/retype_password"
+                    android:inputType="textPassword"
+                    app:layout_constraintBottom_toTopOf="@+id/spinner_countries"
+                    app:layout_constraintEnd_toEndOf="@+id/spinner_countries"
+                    app:layout_constraintStart_toStartOf="@+id/spinner_countries" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
