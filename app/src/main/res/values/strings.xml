@@ -9,16 +9,22 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_settings_fragment">Hello settings fragment</string>
     <string name="hello_logout_fragment">Hello logout fragment</string>
-    <string name="password">password</string>
-    <string name="login">Login</string>
-    <string name="register_text">Register as coach</string>
-    <string name="text_welcome">"Welcome to RaCo :) "</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
     <string name="i_forgot_my_password">Reset my password</string>
     <string name="email">email</string>
-    <string name="create_your_account">Create your Account</string>
     <string name="last_name">Last Name</string>
     <string name="first_name">First Name</string>
     <string name="reset_password">Reset Password</string>
     <string name="retype_password">retype password</string>
+    <string name="forgot_your_password">Forgot your password?</string>
+    <string name="create_your_account">Register as Coach</string>
+    <string name="sign_in">Sign In</string>
+    <string name="email_address">Email address</string>
+    <string name="sign_in_to_your_account">Sign in to your account</string>
+    <string name="welcome_to_raco">Welcome to RaCo</string>
+    <string name="agreeing_to_the_terms_and_conditions">By clicking Register you are agreeing to the Terms and Conditions.</string>
+    <string name="retype_your_password">Retype your password</string>
+    <string name="reset_your_password">Reset your Password</string>
 
 </resources>

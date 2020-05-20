@@ -40,8 +40,8 @@ class RegisterFragment : Fragment() {
             viewModel.createAccount()
         }
         //Todo sowas hier oder in viewModel?
-        val spinnerClubs: Spinner = spinner_clubs
-        val spinnerCountries: Spinner = spinner_countries
+        val spinnerClubs: Spinner = spinnerClubs
+        val spinnerCountries: Spinner = spinnerCountries
         //spinner_clubs.findViewById(R.id.spinner_clubs)
         // Create an ArrayAdapter using the string array and a default spinner layout
         context?.let {

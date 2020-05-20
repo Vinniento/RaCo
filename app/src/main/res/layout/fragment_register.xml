@@ -11,150 +11,198 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-
         android:id="@+id/constraint_layout_register"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background_login"
         tools:context=".login.RegisterFragment">
 
-        <ScrollView
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="262dp">
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop"
+            android:src="@drawable/background_image_login" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+        <!--> hängt einen grauen Schleier über das Bild<!-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_for_sign_in_screen" />
 
-                <Spinner
-                    android:id="@+id/spinner_clubs"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="24dp"
-                    android:spinnerMode="dropdown"
-                    app:layout_constraintBottom_toTopOf="@+id/button_register"
-                    app:layout_constraintEnd_toEndOf="@+id/button_register"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/button_register" />
+        <TextView
+            android:id="@+id/textAgreeTermsConditions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:gravity="center"
+            android:text="@string/agreeing_to_the_terms_and_conditions"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-                <Spinner
-                    android:id="@+id/spinner_countries"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    app:layout_constraintBottom_toTopOf="@+id/spinner_clubs"
-                    app:layout_constraintEnd_toEndOf="@+id/spinner_clubs"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="@+id/spinner_clubs" />
+        <Button
+            android:id="@+id/buttonRegister"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/background_for_sign_in_button"
+            android:text="@string/register"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimaryLogin"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/textAgreeTermsConditions" />
 
-                <TextView
-                    android:id="@+id/text_register"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="65dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginBottom="65dp"
-                    android:text="@string/create_your_account"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@+id/firstname_register"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.495"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+        <Spinner
+            android:id="@+id/spinnerClubs"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="25dp"
+            android:imeOptions="actionDone"
+            android:background="@drawable/background_for_input"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:spinnerMode="dropdown"
+            app:layout_constraintBottom_toTopOf="@+id/buttonRegister" />
 
-                <EditText
-                    android:id="@+id/email_reg"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:autofillHints="@string/email"
-                    android:ems="13"
-                    android:hint="@string/email"
-                    android:inputType="textEmailAddress"
-                    android:text=""
-                    app:layout_constraintBottom_toTopOf="@+id/password_one"
-                    app:layout_constraintEnd_toEndOf="@+id/password_one"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/password_one" />
+        <Spinner
+            android:id="@+id/spinnerCountries"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="10dp"
+            android:imeOptions="actionNext"
+            android:background="@drawable/background_for_input"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:spinnerMode="dropdown"
+            app:layout_constraintBottom_toTopOf="@+id/spinnerClubs" />
 
-                <EditText
-                    android:id="@+id/password_one"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:autofillHints="@string/password"
-                    android:ems="13"
-                    android:hint="@string/password"
-                    android:inputType="textPassword"
-                    app:layout_constraintBottom_toTopOf="@+id/password_verify"
-                    app:layout_constraintEnd_toEndOf="@+id/password_verify"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/password_verify" />
+        <EditText
+            android:id="@+id/registerPasswordTwo"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/background_for_input"
+            android:hint="@string/retype_your_password"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="@color/colorTextHint"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/spinnerCountries" />
 
-                <EditText
-                    android:id="@+id/lastname_register"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:autofillHints=""
-                    android:ems="13"
-                    android:hint="@string/last_name"
-                    android:inputType="textPersonName"
-                    android:text=""
-                    app:layout_constraintBottom_toTopOf="@+id/email_reg"
-                    app:layout_constraintEnd_toEndOf="@+id/email_reg"
-                    app:layout_constraintStart_toStartOf="@+id/email_reg" />
+        <EditText
+            android:id="@+id/registerPasswordOne"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/background_for_input"
+            android:hint="@string/password"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="@color/colorTextHint"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/registerPasswordTwo" />
 
-                <Button
-                    android:id="@+id/button_register"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginBottom="32dp"
-                    android:background="@color/button_green"
-                    android:ems="15"
-                    android:text="@string/register_text"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+        <EditText
+            android:id="@+id/inputEmail"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/background_for_input"
+            android:hint="@string/email_address"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="no"
+            android:inputType="textEmailAddress"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="@color/colorTextHint"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/registerPasswordOne" />
 
-                <EditText
-                    android:id="@+id/firstname_register"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:ems="13"
-                    android:hint="@string/first_name"
-                    android:inputType="textPersonName"
-                    android:text=""
-                    app:layout_constraintBottom_toTopOf="@+id/lastname_register"
-                    app:layout_constraintEnd_toEndOf="@+id/lastname_register"
-                    app:layout_constraintStart_toStartOf="@+id/lastname_register" />
+        <EditText
+            android:id="@+id/registerLastname"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/background_for_input"
+            android:hint="@string/last_name"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="@color/colorTextHint"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/inputEmail" />
 
-                <EditText
-                    android:id="@+id/password_verify"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="24dp"
-                    android:autofillHints=""
-                    android:ems="13"
-                    android:hint="@string/retype_password"
-                    android:inputType="textPassword"
-                    app:layout_constraintBottom_toTopOf="@+id/spinner_countries"
-                    app:layout_constraintEnd_toEndOf="@+id/spinner_countries"
-                    app:layout_constraintStart_toStartOf="@+id/spinner_countries" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </ScrollView>
+        <EditText
+            android:id="@+id/registerFirstname"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/background_for_input"
+            android:hint="@string/first_name"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="@color/colorTextHint"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/registerLastname" />
+
+        <TextView
+            android:id="@+id/textRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="42dp"
+            android:layout_marginEnd="42dp"
+            android:layout_marginBottom="15dp"
+            android:text="@string/sign_in_to_your_account"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/registerFirstname"/>
+
+        <TextView
+            android:id="@+id/registerWelcomeText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="42dp"
+            android:layout_marginEnd="42dp"
+            android:layout_marginBottom="0dp"
+            android:text="@string/create_your_account"
+            android:textColor="@android:color/white"
+            android:textSize="38sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/textRegister"
+           />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

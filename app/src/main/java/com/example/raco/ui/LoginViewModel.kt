@@ -7,11 +7,11 @@ import timber.log.Timber
 
 class LoginViewModel : ViewModel() {
 
-    private val _email = MutableLiveData<String>()
-    val email: LiveData<String>
-        get() = _email
+    private val _inputEmail = MutableLiveData<String>()
+    val inputEmail: LiveData<String>
+        get() = _inputEmail
     private val _password = MutableLiveData<String>()
-    val password: LiveData<String>
+    val inputPassword: LiveData<String>
         get() = _password
 
     override fun onCleared() {
@@ -23,7 +23,7 @@ class LoginViewModel : ViewModel() {
         Timber.i("LoginViewModel created")
     }
 
-    fun login(email: String, password: String) {
+    fun login(inputEmail: String, inputPassword: String) {
         // if (!email.isBlank() && !password.isBlank())
 
         //else
@@ -35,13 +35,11 @@ class LoginViewModel : ViewModel() {
  }*/
     }
 
-    fun isUserCredentialsValid(email: String, password: String): Boolean {
+    fun isUserCredentialsValid(inputEmail: String, inputPassword: String): Boolean {
 
         return (
-                android.util.Patterns.EMAIL_ADDRESS.matcher(email)
+                android.util.Patterns.EMAIL_ADDRESS.matcher(inputEmail)
                     .matches()
-                        && password.length > 8)
+                        && inputPassword.length > 8)
     }
-
-
 }

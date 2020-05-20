@@ -34,27 +34,26 @@ class LoginFragment : Fragment() {
         binding.loginViewModel = viewModel
 
 //navigation onClicks
-        binding.buttonGoToRegister.setOnClickListener {
+        binding.textCreateAccount.setOnClickListener {
             //  findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
 
-        binding.buttonGoToForgotpassword.setOnClickListener {
+        binding.textForgotPassword.setOnClickListener {
             // findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToResetPasswordFragment())
             findNavController().navigate(R.id.action_loginFragment_to_resetPasswordFragment)
         }
 //functional onClicks
-        binding.buttonLogin.setOnClickListener {
+        binding.buttonSignIn.setOnClickListener {
             //TODO hier binding.email oder nur email?
-            viewModel.login(binding.email.text.toString(), binding.password.text.toString())
+            viewModel.login(binding.inputEmail.text.toString(), binding.inputPassword.text.toString())
             findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
         }
 
         //TODO observe livedata
 
         //button_login.isEnabled = viewModel.isUserCredentialsValid("schauerv@gmail.com", "dfdfdfdfdfd")
-
-
+        
         setHasOptionsMenu(true)
         (activity as AppCompatActivity).supportActionBar?.hide()
         return binding.root
