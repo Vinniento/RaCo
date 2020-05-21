@@ -1,8 +1,6 @@
 package com.example.raco
 
 import android.os.Bundle
-import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
@@ -13,11 +11,9 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.raco.databinding.ActivityMainBinding
-import com.google.android.material.navigation.NavigationView
-import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), DrawerInterface,
-    NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(), DrawerInterface
+/* NavigationView.OnNavigationItemSelectedListener */ {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var drawerLayout: DrawerLayout
@@ -53,19 +49,19 @@ class MainActivity : AppCompatActivity(), DrawerInterface,
 
         // Set up navigation menu
         binding.navigationView.setupWithNavController(navController)
-        navigation_view.setNavigationItemSelectedListener(this)
+        // navigation_view.setNavigationItemSelectedListener(this)
 
     }
 
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.logoutFragment -> {
-                Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
-                navController.navigate(R.id.loginFragment)
-            }
-        }
-        return true
-    }
+    /*   override fun onNavigationItemSelected(item: MenuItem): Boolean {
+           when (item.itemId) {
+               R.id.logoutFragment -> {
+                   Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
+                   navController.navigate(R.id.loginFragment)
+               }
+           }
+           return true
+       } */
 
     override fun onSupportNavigateUp(): Boolean {
         return NavigationUI.navigateUp(navController, appBarConfiguration)
