@@ -124,7 +124,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="42dp"
             android:layout_marginEnd="42dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="0dp"
             android:text="@string/welcome_to_raco"
             android:textColor="@android:color/white"
             android:textSize="38sp"
