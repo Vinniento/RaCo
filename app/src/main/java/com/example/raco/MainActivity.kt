@@ -1,7 +1,7 @@
 package com.example.raco
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
@@ -12,7 +12,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.raco.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), DrawerInterface {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var drawerLayout: DrawerLayout
@@ -27,7 +27,14 @@ class MainActivity : AppCompatActivity() {
 
         navController = this.findNavController(R.id.nav_host_fragment)
         //set the fragments that should implement the drawer menu
-        val topLevelDestinations = setOf(R.id.homeFragment, R.id.addPlayersFragment, R.id.addTrainingsFragment, R.id.viewCalenderFragment,R.id.settingsFragment, R.id.logoutFragment)
+        val topLevelDestinations = setOf(
+            R.id.homeFragment,
+            R.id.addPlayersFragment,
+            R.id.addTrainingsFragment,
+            R.id.viewCalenderFragment,
+            R.id.settingsFragment,
+            R.id.logoutFragment
+        )
 
         //set multiple top-level destinations so that menu drawer is shown in that fragments
         // JVM > 1.8 use:
@@ -51,6 +58,15 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         drawerLayout.closeDrawers()
+
+    }
+
+    override fun openDrawer() {
+        drawerLayout.setDrawerLockMode((DrawerLayout.LOCK_MODE_UNLOCKED))
+    }
+
+    override fun closeDrawer() {
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
 
     }
 }

@@ -21,6 +21,7 @@ class RegisterFragment : Fragment() {
 
     private lateinit var binding: FragmentRegisterBinding
     private lateinit var viewModel: RegisterViewModel
+    //  private lateinit var drawerInterface: DrawerInterface
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -71,13 +72,20 @@ class RegisterFragment : Fragment() {
                 spinnerCountries.adapter = adapter
             }
         }
+        //  drawerInterface.closeDrawer()
 
 
     }
 
+    /* override fun onAttach(context: Context) {
+         super.onAttach(context)
+         drawerInterface = context as DrawerInterface
+
+     }*/
     override fun onResume() {
         super.onResume()
         Timber.i("onResume called")
+
     }
 
     override fun onStart() {
@@ -90,9 +98,15 @@ class RegisterFragment : Fragment() {
         Timber.i("onDestroy called")
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Timber.i("onCreate called")
+    }
+
     override fun onStop() {
         super.onStop()
         Timber.i("onStopCalled")
+
     }
 
 
