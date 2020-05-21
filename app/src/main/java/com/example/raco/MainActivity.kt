@@ -49,10 +49,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        if (drawerLayout.isDrawerOpen(binding.root)) {
-            drawerLayout.closeDrawer(binding.root)
-        } else {
-            super.onBackPressed()
-        }
+        super.onBackPressed()
+        drawerLayout.closeDrawers()
+
     }
 }

@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.raco.R
 import com.example.raco.databinding.FragmentRegisterBinding
 import kotlinx.android.synthetic.main.fragment_register.*
+import timber.log.Timber
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -33,6 +34,7 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
+        Timber.i("onCreateView called")
 
         binding.registerViewModel = viewModel
         //OnClicks
@@ -71,6 +73,26 @@ class RegisterFragment : Fragment() {
         }
 
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Timber.i("onResume called")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Timber.i("onStart called")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Timber.i("onDestroy called")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Timber.i("onStopCalled")
     }
 
 
