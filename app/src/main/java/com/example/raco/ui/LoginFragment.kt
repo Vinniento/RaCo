@@ -1,7 +1,11 @@
 package com.example.raco.login
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,11 +26,12 @@ class LoginFragment : Fragment() {
 
     private lateinit var _viewModel: LoginViewModel
     private lateinit var _drawerInterface: DrawerInterface
+    private lateinit var binding: FragmentLoginBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<FragmentLoginBinding>(
+        binding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_login,
             container,
@@ -61,6 +66,7 @@ class LoginFragment : Fragment() {
 
         //button_login.isEnabled = viewModel.isUserCredentialsValid("schauerv@gmail.com", "dfdfdfdfdfd")
 
+        changeWelcomeTextColour()
         setHasOptionsMenu(true)
         (activity as AppCompatActivity).supportActionBar?.hide()
         return binding.root
@@ -71,16 +77,31 @@ class LoginFragment : Fragment() {
         _drawerInterface = context as DrawerInterface
     }
 
+    fun changeWelcomeTextColour() {  // Text to set the TextView
+        val mText = "Welcome to RaCo"
 
-    /*override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.menu_main, menu)
+        // to apply the foreground color span to substrings
+        val mSpannableString = SpannableString(mText)
+
+        // color styles to apply on substrings
+        val mBlack = ForegroundColorSpan(Color.BLACK)
+        val mRed = ForegroundColorSpan(Color.RED)
+        val mGreen = ForegroundColorSpan(Color.GREEN)
+        val mBlue = ForegroundColorSpan(Color.BLUE)
+
+        // applying the color styles to substrings
+        mSpannableString.setSpan(mBlack, 11, 12, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        mSpannableString.setSpan(mRed, 12, 13, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        mSpannableString.setSpan(mGreen, 13, 14, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        mSpannableString.setSpan(mBlue, 14, 15, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        // setting text to the textView
+
+        binding.textWelcome.text = mSpannableString
+
+
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return NavigationUI.onNavDestinationSelected(item, view!!.findNavController())
-                || super.onOptionsItemSelected(item)
-    }*/
     override fun onResume() {
         super.onResume()
         Timber.i("onResume called")
@@ -95,6 +116,7 @@ class LoginFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         Timber.i("onCreate called")
     }
 
