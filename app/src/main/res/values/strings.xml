@@ -26,5 +26,7 @@
     <string name="agreeing_to_the_terms_and_conditions">By clicking Register you are agreeing to the Terms and Conditions.</string>
     <string name="retype_your_password">Retype your password</string>
     <string name="reset_your_password">Reset your Password</string>
-
+    <string name="add_players">Add Players</string>
+    <string name="add_players_to_your_team">Add players to your team</string>
+    <string name="fill_in_your_details_below">Fill in your details below</string>
 </resources>

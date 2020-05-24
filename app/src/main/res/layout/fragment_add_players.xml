@@ -1,14 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.navigationdrawer.AddPlayersFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <View
+        android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_addplayers_fragment" />
+        android:background="@drawable/background_for_screen_in_navigation_drawer"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/textAddPlayers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:text="@string/add_players_to_your_team"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="@+id/view"
+        tools:layout_editor_absoluteX="42dp" />
+
+    <EditText
+        android:id="@+id/playerFirstName"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/background_for_input_dark"
+        android:hint="@string/first_name"
+        android:imeOptions="actionDone"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:textColor="@android:color/white"
+        android:textColorHint="@color/colorTextHint"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/textAddPlayers"/>
+
+    <EditText
+        android:id="@+id/playersLastName"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/background_for_input_dark"
+        android:hint="@string/last_name"
+        android:imeOptions="actionNext"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:textColor="@android:color/white"
+        android:textColorHint="@color/colorTextHint"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/playerFirstName"/>
+
+    <Button
+        android:id="@+id/buttonAddPlayers"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/background_for_button_in_navigation_drawer"
+        android:text="@string/add_players"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimaryLogin"
+        android:textSize="18sp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintTop_toBottomOf="@+id/playersLastName"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -185,7 +185,7 @@
             android:layout_marginStart="42dp"
             android:layout_marginEnd="42dp"
             android:layout_marginBottom="25dp"
-            android:text="Fill in your details below"
+            android:text="@string/fill_in_your_details_below"
             android:textColor="@android:color/white"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@id/registerFirstname"/>
