@@ -55,10 +55,11 @@ class LoginFragment : Fragment() {
 //functional onClicks
         binding.buttonSignIn.setOnClickListener {
             //TODO hier binding.email oder nur email?
-            _viewModel.login(
-                binding.inputEmail.text.toString(),
-                binding.inputPassword.text.toString()
-            )
+            login()
+            /* _viewModel.login(
+                 binding.inputEmail.text.toString(),
+                 binding.inputPassword.text.toString()
+             )*/
             findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
         }
 
@@ -98,6 +99,11 @@ class LoginFragment : Fragment() {
         // setting text to the textView
 
         binding.textWelcome.text = mSpannableString
+
+
+    }
+
+    fun login() {
 
 
     }

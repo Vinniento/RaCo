@@ -24,22 +24,17 @@ class LoginViewModel : ViewModel() {
     }
 
     fun login(inputEmail: String, inputPassword: String) {
-        // if (!email.isBlank() && !password.isBlank())
 
-        //else
-        /* Toast.makeText(
-             this,
-             "Both email and password have to be set",
-             Toast.LENGTH_LONG
-         ).show()
- }*/
     }
 
-    fun isUserCredentialsValid(inputEmail: String, inputPassword: String): Boolean {
+    fun checkUserCredentialsValidity(inputEmail: String, inputPassword: String): String {
 
-        return (
-                android.util.Patterns.EMAIL_ADDRESS.matcher(inputEmail)
-                    .matches()
-                        && inputPassword.length > 8)
+        return if (android.util.Patterns.EMAIL_ADDRESS.matcher(inputEmail)
+                .matches()
+            && inputPassword.length > 8
+        ) {
+            "valid"
+        } else
+            "invalid"
     }
 }

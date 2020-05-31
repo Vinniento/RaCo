@@ -61,8 +61,8 @@
             android:layout_marginStart="40dp"
             android:layout_marginEnd="40dp"
             android:layout_marginBottom="25dp"
-            android:imeOptions="actionDone"
             android:background="@drawable/background_for_input"
+            android:imeOptions="actionDone"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
             android:spinnerMode="dropdown"
@@ -75,8 +75,8 @@
             android:layout_marginStart="40dp"
             android:layout_marginEnd="40dp"
             android:layout_marginBottom="10dp"
-            android:imeOptions="actionNext"
             android:background="@drawable/background_for_input"
+            android:imeOptions="actionNext"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
             android:spinnerMode="dropdown"
@@ -176,6 +176,7 @@
             android:textColor="@android:color/white"
             android:textColorHint="@color/colorTextHint"
             android:textSize="16sp"
+            android:text=""
             app:layout_constraintBottom_toTopOf="@id/registerLastname" />
 
         <TextView
@@ -188,7 +189,7 @@
             android:text="@string/fill_in_your_details_below"
             android:textColor="@android:color/white"
             android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@id/registerFirstname"/>
+            app:layout_constraintBottom_toTopOf="@id/registerFirstname" />
 
         <TextView
             android:id="@+id/registerWelcomeText"
@@ -201,8 +202,7 @@
             android:textColor="@android:color/white"
             android:textSize="38sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/textRegister"
-           />
+            app:layout_constraintBottom_toTopOf="@id/textRegister" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

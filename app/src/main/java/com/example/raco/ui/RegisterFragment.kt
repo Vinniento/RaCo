@@ -39,8 +39,16 @@ class RegisterFragment : Fragment() {
 
         binding.registerViewModel = viewModel
         //OnClicks
+        //TODO hier evtl gleich ein ganzes user objekt übergeben?
         binding.buttonRegister.setOnClickListener {
-            viewModel.createAccount()
+            viewModel.createAccount(
+                binding.registerFirstname.text.toString(),
+                binding.registerLastname.text.toString(),
+                binding.inputEmail.text.toString(),
+                binding.registerPasswordOne.text.toString(),
+                binding.registerPasswordTwo.text.toString()
+            )
+
         }
         //Todo sowas hier oder in viewModel?
         val spinnerClubs: Spinner = spinnerClubs
@@ -59,7 +67,6 @@ class RegisterFragment : Fragment() {
                 spinnerClubs.adapter = adapter
             }
         }
-
         this.context?.let {
             ArrayAdapter.createFromResource(
                 it,
