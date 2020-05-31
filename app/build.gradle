@@ -39,10 +39,11 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.2.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.2'
     implementation 'com.jakewharton.timber:timber:4.7.1'
-    //for http requests
-    implementation 'com.google.code.gson:gson:2.8.6'
-    //coroutines
+    //http requests and coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7'
+    implementation 'com.squareup.retrofit2:retrofit:2.6.3'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.3'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.3"
 
 
 

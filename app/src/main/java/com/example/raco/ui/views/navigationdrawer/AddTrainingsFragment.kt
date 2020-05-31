@@ -1,4 +1,4 @@
-package com.example.raco.ui.navigationdrawer
+package com.example.raco.ui.views.navigationdrawer
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -1,4 +1,4 @@
-package com.example.raco.ui
+package com.example.raco.ui.views
 
 import android.content.Context
 import android.os.Bundle
@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import com.example.raco.DrawerInterface
 import com.example.raco.R
 import timber.log.Timber
