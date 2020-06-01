@@ -1,28 +1,20 @@
 package com.example.raco.data.api.retrofit
 
 import com.example.raco.models.DefaultResponse
+import com.example.raco.models.TestResponse
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object AuthRepository {
     private val authDao: AuthDao
-    const val _BASE_URL = "https://gist.github.com/Vinniento/"
+    private const val _BASE_URL = "https://gist.github.com/Vinniento/"
+    private const val _TEST_URL = "http://ip.jsontest.com"
 
     init {
-        /*   val okHttpClient = OkHttpClient.Builder()
-               .addInterceptor { chain ->
-                   val original = chain.request()
-                   val requestBuilder = original.newBuilder()
-                       .addHeader("Authorization", "")
-                       .method(original.method(), original.body())
-                   val request = requestBuilder.build()
-                   chain.proceed(request)
-               }.build() */
 
         val retrofit = Retrofit.Builder()
-            .baseUrl(_BASE_URL)
+            .baseUrl(_TEST_URL)
             .addConverterFactory(GsonConverterFactory.create())
-            // .client(okHttpClient) ist aus dem "#3 Kotlin Retrofit Tutorial - SignUp using Retrofit POST" tut - notwendig?
             .build()
         authDao = retrofit.create(AuthDao::class.java)
     }
@@ -42,5 +34,9 @@ object AuthRepository {
 
     suspend fun test(): DefaultResponse {
         return authDao.test()
+    }
+
+    suspend fun testIP(): TestResponse {
+        return authDao.testIP()
     }
 }

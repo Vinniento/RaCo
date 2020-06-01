@@ -84,6 +84,7 @@ class RegisterFragment : Fragment() {
 
     }
 
+
     /* override fun onAttach(context: Context) {
          super.onAttach(context)
          drawerInterface = context as DrawerInterface

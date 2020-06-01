@@ -1,6 +1,7 @@
 package com.example.raco.data.api.retrofit
 
 import com.example.raco.models.DefaultResponse
+import com.example.raco.models.TestResponse
 import retrofit2.http.Field
 import retrofit2.http.GET
 
@@ -22,4 +23,9 @@ interface AuthDao {
 
     @GET("/1d2eeb629113837c6990f2e7cb1f3c47")
     suspend fun test(): DefaultResponse
+
+    @GET("/")
+    suspend fun testIP(): TestResponse
+
+
 }
