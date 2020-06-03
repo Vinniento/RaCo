@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.raco.R
 import com.example.raco.databinding.FragmentRegisterBinding
@@ -20,7 +22,7 @@ import timber.log.Timber
 class RegisterFragment : Fragment() {
 
     private lateinit var binding: FragmentRegisterBinding
-    private lateinit var viewModel: RegisterViewModel
+    private lateinit var _viewModel: RegisterViewModel
     //  private lateinit var drawerInterface: DrawerInterface
 
     override fun onCreateView(
@@ -34,14 +36,14 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
+        _viewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
         Timber.i("onCreateView called")
 
-        binding.registerViewModel = viewModel
+        binding.registerViewModel = _viewModel
         //OnClicks
         //TODO hier evtl gleich ein ganzes user objekt übergeben?
         binding.buttonRegister.setOnClickListener {
-            viewModel.createAccount(
+            _viewModel.createAccount(
                 binding.registerFirstname.text.toString(),
                 binding.registerLastname.text.toString(),
                 binding.inputEmail.text.toString(),
@@ -80,7 +82,10 @@ class RegisterFragment : Fragment() {
             }
         }
         //  drawerInterface.closeDrawer()
+        _viewModel.toastMessageObserver.observe(viewLifecycleOwner, Observer {
+            Toast.makeText(context, it, Toast.LENGTH_LONG).show()
 
+        })
 
     }
 

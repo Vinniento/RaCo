@@ -55,16 +55,20 @@ class LoginFragment : Fragment() {
 //functional onClicks
         binding.buttonSignIn.setOnClickListener {
             //TODO hier binding.email oder nur email?
-            login()
-            /* _viewModel.login(
-                 binding.inputEmail.text.toString(),
-                 binding.inputPassword.text.toString()
-             )*/
-            findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+            _viewModel.login(
+                "email@gmail.com",
+                "password"
+            )
+            if (_viewModel.isLoginValid)
+                Timber.i("ViewModel isLogin Valid: ${_viewModel.isLoginValid}")
+            /* findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+             Toast.makeText(context, "Welcome username", Toast.LENGTH_LONG).show()*/
+            /*}*/ /*else {
+                Toast.makeText(context, "Wrong credentials", Toast.LENGTH_LONG).show()
+            }*/
         }
 
         //TODO observe livedata
-
         //button_login.isEnabled = viewModel.isUserCredentialsValid("schauerv@gmail.com", "dfdfdfdfdfd")
 
         changeWelcomeTextColour()
@@ -103,10 +107,6 @@ class LoginFragment : Fragment() {
 
     }
 
-    fun login() {
-
-
-    }
 
     override fun onResume() {
         super.onResume()
