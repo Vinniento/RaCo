@@ -15,35 +15,15 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
     private val authRepository = UserRepo
     private lateinit var resultList: DefaultResponse
 
-    //live and mutable data
-    private val _firstname = MutableLiveData<String>()
-    val firstname: LiveData<String>
-        get() = _firstname
-    private val _lastname = MutableLiveData<String>()
-    val lastname: LiveData<String>
-        get() = _lastname
-    private val _inputEmail = MutableLiveData<String>()
-    val inputEmail: LiveData<String>
-        get() = _inputEmail
-
-    private val _passwordFirst = MutableLiveData<String>()
-    val inputPassword: LiveData<String>
-        get() = _passwordFirst
-
     private val _toastMesageObserver = MutableLiveData<String>()
     val toastMessageObserver: LiveData<String>
         get() = _toastMesageObserver
-
-    private val _passwordSecond = MutableLiveData<String>()
-    val inputPasswordSecond: LiveData<String>
-        get() = _passwordSecond
 
 
     private val _errorHandler = CoroutineExceptionHandler { _, throwable ->
         Timber.e(throwable.message.toString())
     }
 
-    //TODO livedata so einbauen, dass man nicht die parameter braucht zum übergeben im RegisterFragment??
     fun createAccount(
         firstname: String,
         lastname: String,

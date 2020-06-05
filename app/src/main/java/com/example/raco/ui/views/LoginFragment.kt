@@ -12,11 +12,13 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.raco.DrawerInterface
 import com.example.raco.R
 import com.example.raco.databinding.FragmentLoginBinding
+import com.google.android.material.snackbar.Snackbar
 import timber.log.Timber
 
 /**
@@ -41,7 +43,7 @@ class LoginFragment : Fragment() {
         _viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
 
         binding.loginViewModel = _viewModel
-
+        // binding.setLifecycleOwner(this) TODO hereausfinden wieso er das nicht akzeptiert
 //navigation onClicks
         binding.textCreateAccount.setOnClickListener {
             //  findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
@@ -52,24 +54,36 @@ class LoginFragment : Fragment() {
             // findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToResetPasswordFragment())
             findNavController().navigate(R.id.action_loginFragment_to_resetPasswordFragment)
         }
+
+        _viewModel.loginState.observe(this.viewLifecycleOwner, Observer {
+            if (it.success == "valid")
+                findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+        })
+        _viewModel.toastMessageObserver.observe(viewLifecycleOwner, Observer {
+            Snackbar.make(
+                requireActivity().findViewById(android.R.id.content),
+                it, Snackbar.LENGTH_LONG
+            ).show()
+
+        })
 //functional onClicks
         binding.buttonSignIn.setOnClickListener {
             //TODO hier binding.email oder nur email?
             _viewModel.login(
-                "email@gmail.com",
+                "emadil@gmail.com",
                 "password"
             )
-            if (_viewModel.isLoginValid)
-                Timber.i("ViewModel isLogin Valid: ${_viewModel.isLoginValid}")
-            /* findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
-             Toast.makeText(context, "Welcome username", Toast.LENGTH_LONG).show()*/
-            /*}*/ /*else {
-                Toast.makeText(context, "Wrong credentials", Toast.LENGTH_LONG).show()
-            }*/
+
+            //  Timber.i("ViewModel isLogin Valid:")
+/* findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+Toast.makeText(context, "Welcome username", Toast.LENGTH_LONG).show()*/
+/*}*/ /*else {
+Toast.makeText(context, "Wrong credentials", Toast.LENGTH_LONG).show()
+}*/
         }
 
-        //TODO observe livedata
-        //button_login.isEnabled = viewModel.isUserCredentialsValid("schauerv@gmail.com", "dfdfdfdfdfd")
+//TODO observe livedata
+//button_login.isEnabled = viewModel.isUserCredentialsValid("schauerv@gmail.com", "dfdfdfdfdfd")
 
         changeWelcomeTextColour()
         setHasOptionsMenu(true)
@@ -85,22 +99,22 @@ class LoginFragment : Fragment() {
     fun changeWelcomeTextColour() {  // Text to set the TextView
         val mText = "Welcome to RaCo"
 
-        // to apply the foreground color span to substrings
+// to apply the foreground color span to substrings
         val mSpannableString = SpannableString(mText)
 
-        // color styles to apply on substrings
+// color styles to apply on substrings
         val mBlack = ForegroundColorSpan(Color.BLACK)
         val mRed = ForegroundColorSpan(Color.RED)
         val mGreen = ForegroundColorSpan(Color.GREEN)
         val mBlue = ForegroundColorSpan(Color.BLUE)
 
-        // applying the color styles to substrings
+// applying the color styles to substrings
         mSpannableString.setSpan(mBlack, 11, 12, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         mSpannableString.setSpan(mRed, 12, 13, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         mSpannableString.setSpan(mGreen, 13, 14, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         mSpannableString.setSpan(mBlue, 14, 15, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 
-        // setting text to the textView
+// setting text to the textView
 
         binding.textWelcome.text = mSpannableString
 

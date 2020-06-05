@@ -5,21 +5,26 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.raco.data.api.user.UserRepo
 import com.example.raco.models.DefaultResponse
+import com.example.raco.utilities.HelperClass
 import kotlinx.coroutines.*
 import timber.log.Timber
 
 class LoginViewModel : ViewModel() {
     private val _authRepository = UserRepo
-    var isLoginValid: Boolean = false
     private lateinit var _defaultResponse: DefaultResponse
 
-    private val _inputEmail = MutableLiveData<String>()
-    val inputEmail: LiveData<String>
-        get() = _inputEmail
-    private val _password = MutableLiveData<String>()
-    val inputPassword: LiveData<String>
-        get() = _password
+    private val _loginState = MutableLiveData<DefaultResponse>()
+    val loginState: LiveData<DefaultResponse>
+        get() = _loginState
 
+    private val _loginJob = Job()
+
+
+    private val _toastMessageObserver = MutableLiveData<String>()
+    val toastMessageObserver: LiveData<String>
+        get() = _toastMessageObserver
+
+    private val uiScope = CoroutineScope(Dispatchers.Main + _loginJob)
     override fun onCleared() {
         super.onCleared()
         Timber.i("LoginViewModel destroyed")
@@ -33,24 +38,34 @@ class LoginViewModel : ViewModel() {
         Timber.e(throwable.message.toString())
     }
 
-    fun login(email: String, password: String) {
-        val loginJob = Job()
-        val coroutineScope = CoroutineScope(loginJob + Dispatchers.Main)
-        coroutineScope.launch(_errorHandler) {
-            _defaultResponse = _authRepository.login(email, password)
+
+    private suspend fun getLoginData(email: String, password: String) {
+        /*return withContext(Dispatchers.Main) {
+            val successResponse = _authRepository.login(email, password)
             // Timber.i("Login Response: " + _defaultResponse.success)
-        }
-        isLoginValid = _defaultResponse.success == "valid"
+
+            successResponse
+        }*/
     }
 
-    fun checkUserCredentialsValidity(inputEmail: String, inputPassword: String): String {
+    fun login(email: String, password: String) {
+        if (checkUserCredentialsValidity(email, password)) {
 
-        return if (android.util.Patterns.EMAIL_ADDRESS.matcher(inputEmail)
-                .matches()
-            && inputPassword.length > 8
-        ) {
-            "valid"
+            // _toastMessageObserver.value="Credentials valid"
+            CoroutineScope(Dispatchers.Main + _loginJob).launch(_errorHandler) {
+                val resultState = _authRepository.login(email, password)
+                _loginState.value = resultState
+                _toastMessageObserver.value = resultState.success
+            }
         } else
-            "invalid"
+            _toastMessageObserver.value = "Email or password are in invalid format"
+
+
     }
+
+
+    private fun checkUserCredentialsValidity(inputEmail: String, inputPassword: String): Boolean {
+        return (HelperClass.isValidEmail(inputEmail) && inputPassword.length >= 8)
+    }
+
 }
