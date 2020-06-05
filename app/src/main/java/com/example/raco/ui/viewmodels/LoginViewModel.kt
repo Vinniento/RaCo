@@ -20,9 +20,9 @@ class LoginViewModel : ViewModel() {
     private val _loginJob = Job()
 
 
-    private val _toastMessageObserver = MutableLiveData<String>()
-    val toastMessageObserver: LiveData<String>
-        get() = _toastMessageObserver
+    private val _snackbarMessageObserver = MutableLiveData<String>()
+    val snackbarMessageObserver: LiveData<String>
+        get() = _snackbarMessageObserver
 
     private val uiScope = CoroutineScope(Dispatchers.Main + _loginJob)
     override fun onCleared() {
@@ -55,12 +55,10 @@ class LoginViewModel : ViewModel() {
             CoroutineScope(Dispatchers.Main + _loginJob).launch(_errorHandler) {
                 val resultState = _authRepository.login(email, password)
                 _loginState.value = resultState
-                _toastMessageObserver.value = resultState.success
+                _snackbarMessageObserver.value = resultState.success
             }
         } else
-            _toastMessageObserver.value = "Email or password are in invalid format"
-
-
+            _snackbarMessageObserver.value = "Email or password are in invalid format"
     }
 
 

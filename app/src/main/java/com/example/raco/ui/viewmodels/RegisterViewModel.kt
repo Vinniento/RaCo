@@ -12,13 +12,13 @@ import timber.log.Timber
 
 class RegisterViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val authRepository = UserRepo
-    private lateinit var resultList: DefaultResponse
+    private val _authRepository = UserRepo
+    private lateinit var _resultList: DefaultResponse
+    private val _registrationJob = Job()
 
-    private val _toastMesageObserver = MutableLiveData<String>()
-    val toastMessageObserver: LiveData<String>
-        get() = _toastMesageObserver
-
+    private val _snackbarMessageObserver = MutableLiveData<String>()
+    val snackbarMessageObserver: LiveData<String>
+        get() = _snackbarMessageObserver
 
     private val _errorHandler = CoroutineExceptionHandler { _, throwable ->
         Timber.e(throwable.message.toString())
@@ -33,23 +33,21 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
     ) {
         if (checkCredentialsValidity(email, firstPassword, secondPassword)) {
             //TODO register with User(firstname, lastname....) - gute Option?
-            val registrationJob = Job()
 
-            val coroutineScope = CoroutineScope(registrationJob + Dispatchers.Main)
+            val coroutineScope = CoroutineScope(_registrationJob + Dispatchers.Main)
             coroutineScope.launch(_errorHandler) {
-                resultList = authRepository.register(firstname, lastname, email, firstPassword)
+                _resultList = _authRepository.register(firstname, lastname, email, firstPassword)
 
-                Timber.i("Registration " + resultList.success)
+                _snackbarMessageObserver.value = _resultList.success
+
+                Timber.i("Registration " + _resultList.success)
             }
         } else {
-            _toastMesageObserver.setValue("Wrong credentials. Maybe passwords don't match")
+            _snackbarMessageObserver.setValue("Wrong credentials. Maybe passwords don't match")
         }
     }
-
 
     private fun checkCredentialsValidity(email: String, pass1: String, pass2: String): Boolean {
         return pass1 == pass2 && HelperClass.isValidEmail(email)
     }
-
-
 }

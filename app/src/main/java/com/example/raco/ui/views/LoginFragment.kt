@@ -59,7 +59,7 @@ class LoginFragment : Fragment() {
             if (it.success == "valid")
                 findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
         })
-        _viewModel.toastMessageObserver.observe(viewLifecycleOwner, Observer {
+        _viewModel.snackbarMessageObserver.observe(viewLifecycleOwner, Observer {
             Snackbar.make(
                 requireActivity().findViewById(android.R.id.content),
                 it, Snackbar.LENGTH_LONG
@@ -70,7 +70,7 @@ class LoginFragment : Fragment() {
         binding.buttonSignIn.setOnClickListener {
             //TODO hier binding.email oder nur email?
             _viewModel.login(
-                "emadil@gmail.com",
+                "email@gmail.com",
                 "password"
             )
 

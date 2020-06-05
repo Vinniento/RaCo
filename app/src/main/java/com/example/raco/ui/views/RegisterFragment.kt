@@ -6,13 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.raco.R
 import com.example.raco.databinding.FragmentRegisterBinding
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_register.*
 import timber.log.Timber
 
@@ -82,11 +82,12 @@ class RegisterFragment : Fragment() {
             }
         }
         //  drawerInterface.closeDrawer()
-        _viewModel.toastMessageObserver.observe(viewLifecycleOwner, Observer {
-            Toast.makeText(context, it, Toast.LENGTH_LONG).show()
-
+        _viewModel.snackbarMessageObserver.observe(viewLifecycleOwner, Observer {
+            Snackbar.make(
+                requireActivity().findViewById(android.R.id.content),
+                it, Snackbar.LENGTH_LONG
+            ).show()
         })
-
     }
 
 
