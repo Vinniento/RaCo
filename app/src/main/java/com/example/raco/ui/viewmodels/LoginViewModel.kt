@@ -56,6 +56,7 @@ class LoginViewModel : ViewModel() {
                 val resultState = _authRepository.login(email, password)
                 _loginState.value = resultState
                 _snackbarMessageObserver.value = resultState.success
+                Timber.i(resultState.success)
             }
         } else
             _snackbarMessageObserver.value = "Email or password are in invalid format"
