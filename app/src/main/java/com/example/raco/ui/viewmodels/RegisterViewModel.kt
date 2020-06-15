@@ -31,7 +31,12 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
         firstPassword: String,
         secondPassword: String
     ) {
-        if (checkCredentialsValidity(email, firstPassword, secondPassword)) {
+        if (checkCredentialsValidity(
+                email,
+                firstPassword,
+                secondPassword
+            ) && firstname.isNotBlank() && lastname.isNotBlank()
+        ) {
             //TODO register with User(firstname, lastname....) - gute Option?
 
             val coroutineScope = CoroutineScope(_registrationJob + Dispatchers.Main)

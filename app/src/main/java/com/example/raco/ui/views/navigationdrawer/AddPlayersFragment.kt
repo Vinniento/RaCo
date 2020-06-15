@@ -4,18 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.Spinner
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.raco.R
 import com.example.raco.databinding.FragmentAddPlayerBinding
-import com.example.raco.login.RegisterViewModel
 import com.example.raco.ui.viewmodels.AddPlayerViewModel
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.fragment_register.*
 import timber.log.Timber
 
 class AddPlayersFragment : Fragment() {
@@ -43,7 +39,8 @@ class AddPlayersFragment : Fragment() {
         _binding.buttonAddPlayers.setOnClickListener {
             _viewModel.addPlayer(
                 _binding.playerFirstName.text.toString(),
-                _binding.playersLastName.text.toString()
+                _binding.playersLastName.text.toString(),
+                _binding.playerEmail.text.toString()
             )
         }
 

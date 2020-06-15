@@ -27,11 +27,10 @@ object UserRepo {
     }
 
     suspend fun addPlayer(
-        playerFirstName: String, playerLastName: String, playerEmail: String, password: String
+        playerFirstName: String, playerLastName: String, playerEmail: String
     ): DefaultResponse {
         return USER_DAO.addplayer(
-            playerFirstName, playerLastName,
-            playerEmail, password
+            playerFirstName, playerLastName, playerEmail
         )
     }
 }

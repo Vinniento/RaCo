@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.raco.data.api.user.UserRepo
 import com.example.raco.models.DefaultResponse
+import com.example.raco.utilities.HelperClass
 import kotlinx.coroutines.*
 import timber.log.Timber
 
@@ -23,25 +24,28 @@ class AddPlayerViewModel : ViewModel() {
 
     fun addPlayer(
         playerFirstName: String,
-        playerLastName: String
+        playerLastName: String,
+        playerEmail: String
     ) {
-        //if (!(playerFirstName.isEmpty()&&playerLastName.isEmpty())) {
-
-        val coroutineScope = CoroutineScope(_addPlayerJob + Dispatchers.Main)
-        coroutineScope.launch(_errorHandler) {
-            _resultList = _authRepository.addPlayer(
-                playerFirstName,
-                playerLastName,
-                "blabla@gmail.com",
-                "passwordbla"
+        if (playerFirstName.isNotBlank() && playerLastName.isNotBlank() && HelperClass.isValidEmail(
+                playerEmail
             )
+        ) {
 
-            _snackbarMessageObserver.value = _resultList.toString()
+            val coroutineScope = CoroutineScope(_addPlayerJob + Dispatchers.Main)
+            coroutineScope.launch(_errorHandler) {
+                _resultList = _authRepository.addPlayer(
+                    playerFirstName,
+                    playerLastName,
+                    playerEmail
+                )
 
-            Timber.i("Player added with " + _resultList.toString())
+                _snackbarMessageObserver.value = _resultList.success
+
+                Timber.i("Player added: " + _resultList.success)
+            }
+        } else {
+            _snackbarMessageObserver.setValue("Fields are empty, please add a Name!")
         }
-        /* } else {
-             _snackbarMessageObserver.setValue("Fields are empty, please add a Name!")
-         }*/
     }
 }
