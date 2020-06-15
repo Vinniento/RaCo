@@ -13,7 +13,7 @@
         android:id="@+id/addPlayersFragment"
         android:name="com.example.raco.ui.views.navigationdrawer.AddPlayersFragment"
         android:label="Add Players"
-        tools:layout="@layout/fragment_add_players" />
+        tools:layout="@layout/fragment_add_player" />
     <fragment
         android:id="@+id/addTrainingsFragment"
         android:name="com.example.raco.ui.views.navigationdrawer.AddTrainingsFragment"

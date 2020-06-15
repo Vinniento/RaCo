@@ -21,4 +21,11 @@ interface UserDao {
         @Query("password") password: String
     ): DefaultResponse
 
+    @POST("addplayer")
+    suspend fun addplayer(
+        @Query("playerFirstName") playerFirstName: String,
+        @Query("playerLastName") playerLastName: String,
+        @Query("email") email: String,
+        @Query("password") password: String
+    ): DefaultResponse
 }

@@ -8,7 +8,6 @@ class HelperClass {
         fun isValidEmail(email: String): Boolean {
             return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email)
                 .matches()
-
         }
     }
 }
