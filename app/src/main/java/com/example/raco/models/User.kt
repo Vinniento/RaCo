@@ -4,7 +4,6 @@ data class User(
     val firstname: String,
     val lastname: String,
     val username: String,
-    val email: String,
-    val password: String
+    val email: String
 )
 
