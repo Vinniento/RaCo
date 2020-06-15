@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object UserRepo {
     private val USER_DAO: UserDao
-    private const val _BASE_URL: String = "http://192.168.0.123/raco/public/api/"
+    private const val _BASE_URL: String = "http://192.168.1.119/raco/public/api/"
 
     init {
         val retrofit = Retrofit.Builder()
@@ -26,9 +26,12 @@ object UserRepo {
         return USER_DAO.login(email, password)
     }
 
-    suspend fun addplayer(
-        playerFirstName: String, playerLastName: String
+    suspend fun addPlayer(
+        playerFirstName: String, playerLastName: String, playerEmail: String, password: String
     ): DefaultResponse {
-        return USER_DAO.addplayer(playerFirstName, playerLastName, "hallo@z.at", "12341234")
+        return USER_DAO.addplayer(
+            playerFirstName, playerLastName,
+            playerEmail, password
+        )
     }
 }

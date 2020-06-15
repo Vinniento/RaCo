@@ -64,7 +64,6 @@ class LoginFragment : Fragment() {
                 requireActivity().findViewById(android.R.id.content),
                 it, Snackbar.LENGTH_LONG
             ).show()
-
         })
 //functional onClicks
         binding.buttonSignIn.setOnClickListener {
@@ -73,13 +72,7 @@ class LoginFragment : Fragment() {
                 "email@gmail.com",
                 "password"
             )
-
-            //  Timber.i("ViewModel isLogin Valid:")
-/* findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
-Toast.makeText(context, "Welcome username", Toast.LENGTH_LONG).show()*/
-/*}*/ /*else {
-Toast.makeText(context, "Wrong credentials", Toast.LENGTH_LONG).show()
-}*/
+            Timber.i("login called")
         }
 
 //TODO observe livedata

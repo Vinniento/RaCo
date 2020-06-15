@@ -21,10 +21,11 @@ interface UserDao {
         @Query("password") password: String
     ): DefaultResponse
 
+    //TODO password gleich einfügen oder leer lassen bis player sich anmeldet?
     @POST("addplayer")
     suspend fun addplayer(
-        @Query("playerFirstName") playerFirstName: String,
-        @Query("playerLastName") playerLastName: String,
+        @Query("firstname") firstname: String,
+        @Query("lastname") lastname: String,
         @Query("email") email: String,
         @Query("password") password: String
     ): DefaultResponse
