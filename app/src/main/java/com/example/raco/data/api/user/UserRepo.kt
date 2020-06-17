@@ -1,6 +1,7 @@
 package com.example.raco.data.api.user
 
 import com.example.raco.models.DefaultResponse
+import com.example.raco.models.PlayersList
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -32,5 +33,9 @@ object UserRepo {
         return USER_DAO.addplayer(
             playerFirstName, playerLastName, playerEmail
         )
+    }
+
+    suspend fun getAllPlayers(): PlayersList {
+        return USER_DAO.getAllPlayers()
     }
 }

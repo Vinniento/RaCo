@@ -1,6 +1,7 @@
 package com.example.raco.data.api.user
 
 import com.example.raco.models.DefaultResponse
+import com.example.raco.models.PlayersList
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
@@ -24,8 +25,11 @@ interface UserDao {
     //TODO password gleich einfügen oder leer lassen bis player sich anmeldet?
     @POST("addplayer")
     suspend fun addplayer(
-        @Query("user") firstname: String,
+        @Query("firstname") firstname: String,
         @Query("lastname") lastname: String,
         @Query("email") email: String
     ): DefaultResponse
+
+    @GET("getallplayers")
+    suspend fun getAllPlayers(): PlayersList
 }
