@@ -1,7 +1,7 @@
 package com.example.raco.data.api.user
 
 import com.example.raco.models.DefaultResponse
-import com.example.raco.models.PlayersList
+import com.example.raco.models.PlayerResponse
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -35,7 +35,7 @@ object UserRepo {
         )
     }
 
-    suspend fun getAllPlayers(): PlayersList {
+    suspend fun getAllPlayers(): List<PlayerResponse> {
         return USER_DAO.getAllPlayers()
     }
 }

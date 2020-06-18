@@ -5,8 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.raco.data.api.user.UserRepo
 import com.example.raco.models.DefaultResponse
-import com.example.raco.models.PlayersList
-import com.example.raco.models.User
+import com.example.raco.models.PlayerResponse
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.*
@@ -17,8 +16,8 @@ class AddPlayerViewModel : ViewModel() {
     private lateinit var _resultList: DefaultResponse
     private val _addPlayerJob = Job()
     private val _coroutineScope = CoroutineScope(_addPlayerJob + Dispatchers.Main)
-    private lateinit var _playerList: PlayersList
-    private lateinit var _playerObjectList: List<User>
+    private lateinit var _playerList: List<PlayerResponse>
+    private lateinit var _playerObjectList: List<PlayerResponse>
     private val _snackbarMessageObserver = MutableLiveData<String>()
     val snackbarMessageObserver: LiveData<String>
         get() = _snackbarMessageObserver
@@ -56,12 +55,11 @@ class AddPlayerViewModel : ViewModel() {
 
     fun getAllPlayers() {
         val gson = Gson()
-        val arrayTutorialType = object : TypeToken<PlayersList>() {}.type
+        val arrayTutorialType = object : TypeToken<List<PlayerResponse>>() {}.type
         _coroutineScope.launch(_errorHandler) {
             _playerList = _authRepository.getAllPlayers()
-            Timber.i(_playerList.toString())
-            _playerObjectList = gson.fromJson(_playerList.toString(), arrayTutorialType)
-            _playerObjectList.forEach { Timber.i(it.toString()) }
+            _playerObjectList = gson.fromJson(gson.toJson(_playerList), arrayTutorialType)
+            _playerObjectList.forEachIndexed { index, playerResponse -> Timber.i("Index = $index + ${playerResponse}") }
 
         }
     }

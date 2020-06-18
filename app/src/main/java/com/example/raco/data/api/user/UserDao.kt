@@ -1,7 +1,7 @@
 package com.example.raco.data.api.user
 
 import com.example.raco.models.DefaultResponse
-import com.example.raco.models.PlayersList
+import com.example.raco.models.PlayerResponse
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
@@ -31,5 +31,5 @@ interface UserDao {
     ): DefaultResponse
 
     @GET("getallplayers")
-    suspend fun getAllPlayers(): PlayersList
+    suspend fun getAllPlayers(): List<PlayerResponse>
 }
