@@ -16,6 +16,7 @@ class AddPlayerViewModel : ViewModel() {
     private lateinit var _resultList: DefaultResponse
     private val _addPlayerJob = Job()
     private val _coroutineScope = CoroutineScope(_addPlayerJob + Dispatchers.Main)
+
     private lateinit var _playerList: List<PlayerResponse>
     private lateinit var _playerObjectList: List<PlayerResponse>
     private val _snackbarMessageObserver = MutableLiveData<String>()
