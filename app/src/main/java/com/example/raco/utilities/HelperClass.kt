@@ -8,6 +8,11 @@ class HelperClass {
                 .matches()
         }
 
+        fun isValidDate(training_date: String): Boolean {
+            //TODO implement date format check
+            return true
+        }
+
 
     }
 }

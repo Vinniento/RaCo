@@ -2,6 +2,7 @@ package com.example.raco.data.api.user
 
 import com.example.raco.models.DefaultResponse
 import com.example.raco.models.PlayerResponse
+import com.example.raco.models.TrainingResponse
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
@@ -32,4 +33,13 @@ interface UserDao {
 
     @GET("getallplayers")
     suspend fun getAllPlayers(): List<PlayerResponse>
+
+    //TODO password gleich einfügen oder leer lassen bis player sich anmeldet?
+    @POST("addtraining")
+    suspend fun addTraining(
+        @Query("date") date: String
+    ): DefaultResponse
+
+    @GET("getalltrainings")
+    suspend fun getAllTrainings(): List<TrainingResponse>
 }

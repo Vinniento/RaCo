@@ -2,6 +2,7 @@ package com.example.raco.data.api.user
 
 import com.example.raco.models.DefaultResponse
 import com.example.raco.models.PlayerResponse
+import com.example.raco.models.TrainingResponse
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -38,4 +39,17 @@ object UserRepo {
     suspend fun getAllPlayers(): List<PlayerResponse> {
         return USER_DAO.getAllPlayers()
     }
+
+    suspend fun addTraining(
+        date: String
+    ): DefaultResponse {
+        return USER_DAO.addTraining(
+            date
+        )
+    }
+
+    suspend fun getAllTrainings(): List<TrainingResponse> {
+        return USER_DAO.getAllTrainings()
+    }
+
 }

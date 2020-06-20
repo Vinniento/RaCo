@@ -60,6 +60,7 @@ class AddPlayerViewModel : ViewModel() {
         } else {
             _snackbarMessageObserver.setValue("Fields are empty, please add a Name!")
         }
+        //TODO allgemein zu livedata ändern? Würde es dann getAllPlayer automatisch aufrufen?
         getAllPlayers()
     }
 
