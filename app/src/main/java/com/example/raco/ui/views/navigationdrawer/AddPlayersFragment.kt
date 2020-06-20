@@ -8,10 +8,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.raco.R
 import com.example.raco.databinding.FragmentAddPlayerBinding
+import com.example.raco.ui.PlayerAdapter
 import com.example.raco.ui.viewmodels.AddPlayerViewModel
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.fragment_add_player.*
 import timber.log.Timber
 
 class AddPlayersFragment : Fragment() {
@@ -24,6 +27,8 @@ class AddPlayersFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_add_player, container, false)
+
+
         val view: View = _binding.root
         return view
     }
@@ -33,6 +38,13 @@ class AddPlayersFragment : Fragment() {
         _viewModel = ViewModelProvider(this).get(AddPlayerViewModel::class.java)
         Timber.i("onCreateView called")
 
+
+        players_recyclerview.layoutManager = LinearLayoutManager(context)
+
+        _viewModel.playerObjectList.observe(viewLifecycleOwner, Observer {
+            players_recyclerview.adapter = PlayerAdapter(_viewModel.playerObjectList.value!!)
+
+        })
         _binding.addPlayerViewModel = _viewModel
         //OnClicks
         //TODO hier evtl gleich ein ganzes user objekt übergeben?
