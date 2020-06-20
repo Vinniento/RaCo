@@ -16,4 +16,6 @@
     <color name="colorPrimaryDarkLogin">#000000</color>
     <color name="colorAccentLogin">#D81B60</color>
 
+    <color name="playerCard">#567888</color>
+
 </resources>
