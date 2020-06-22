@@ -41,16 +41,16 @@ class AddTrainingViewModel(application: Application) : AndroidViewModel(applicat
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun addTraining(
-        year: Int, month: Int, day: Int
+        year: Int, month: Int, day: Int, hour: Int, minute: Int
     ) {
-        //, hour: Int, minute: Int, duration: Double
+        //, , duration: Double
         //var formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
 
         val date: String = "$year-$month-$day"
-        //val time: String = "$hour-$minute"
+        val time: String = "$hour:$minute"
         // if (HelperClass.isValidDate(date) ) {
         _coroutineScope.launch(_errorHandler) {
-            _resultList = _authRepository.addTraining(date, time = "16:50", duration = 5.0)
+            _resultList = _authRepository.addTraining(date, time, duration = 5.0)
             _snackbarMessageObserver.value = _resultList.success
             Timber.i("Training added: " + _resultList.success)
         }

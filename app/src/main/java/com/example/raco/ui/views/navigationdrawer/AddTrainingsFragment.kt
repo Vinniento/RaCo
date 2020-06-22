@@ -1,6 +1,7 @@
 package com.example.raco.ui.views.navigationdrawer
 
 import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.icu.util.Calendar
 import android.os.Build
 import android.os.Bundle
@@ -26,9 +27,12 @@ class AddTrainingsFragment : Fragment() {
     private lateinit var _binding: FragmentAddTrainingsBinding
     private lateinit var _viewModel: AddTrainingViewModel
     private lateinit var _datePickerDialog: DatePickerDialog
+    private lateinit var _timePickerDialog: TimePickerDialog
     var day = 0
     var month: Int = 0
     var year: Int = 0
+    var hour: Int = 0
+    var minute: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,7 +59,7 @@ class AddTrainingsFragment : Fragment() {
         })
         _binding.buttonAddTraining.setOnClickListener {
 
-            _viewModel.addTraining(year, month, day)
+            _viewModel.addTraining(year, month, day, hour, minute)
 
         }
         _binding.addTrainingViewModel = _viewModel
@@ -85,12 +89,28 @@ class AddTrainingsFragment : Fragment() {
 
             _datePickerDialog.show()
         }
-        /*_viewModel.addTraining(
-            _binding.trainingsDateEditText.text.toString()
 
-        )*/
+        _binding.trainingsTimeTextview.setOnClickListener {
 
+            val calendar: Calendar = Calendar.getInstance()
+            hour = calendar.get(Calendar.HOUR)
+            minute = calendar.get(Calendar.MINUTE)
+            _timePickerDialog =
+                TimePickerDialog(
+                    requireActivity(),
+                    TimePickerDialog.OnTimeSetListener { view, hourDialog, minuteDialog ->
 
+                        hour = hourDialog
+                        minute = minuteDialog
+                        trainingsTimeTextview.text = "$hourDialog:$minuteDialog"
+                    },
+                    year,
+                    month,
+                    true
+                )
+
+            _timePickerDialog.show()
+        }
         _viewModel.snackbarMessageObserver.observe(viewLifecycleOwner, Observer {
             Snackbar.make(
                 requireActivity().findViewById(android.R.id.content),
