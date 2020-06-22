@@ -88,4 +88,5 @@ class AddPlayersFragment : Fragment() {
         super.onStop()
         Timber.i("onStopCalled")
     }
+
 }

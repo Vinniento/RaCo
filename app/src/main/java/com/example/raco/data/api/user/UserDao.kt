@@ -37,7 +37,9 @@ interface UserDao {
     //TODO password gleich einfügen oder leer lassen bis player sich anmeldet?
     @POST("addtraining")
     suspend fun addTraining(
-        @Query("date") date: String
+        @Query("date") date: String,
+        @Query("time") time: String,
+        @Query("duration") duration: Double
     ): DefaultResponse
 
     @GET("getalltrainings")

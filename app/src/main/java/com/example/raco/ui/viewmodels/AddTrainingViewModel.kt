@@ -1,18 +1,20 @@
 package com.example.raco.ui.viewmodels
 
+import android.app.Application
+import android.os.Build
+import androidx.annotation.RequiresApi
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.example.raco.data.api.user.UserRepo
 import com.example.raco.models.DefaultResponse
 import com.example.raco.models.TrainingResponse
-import com.example.raco.utilities.HelperClass
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.*
 import timber.log.Timber
 
-class AddTrainingViewModel : ViewModel() {
+class AddTrainingViewModel(application: Application) : AndroidViewModel(application) {
     private val _authRepository = UserRepo
     private lateinit var _resultList: DefaultResponse
     private val _addTrainingJob = Job()
@@ -37,19 +39,24 @@ class AddTrainingViewModel : ViewModel() {
         getAllTrainings()
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun addTraining(
-        date: String
+        year: Int, month: Int, day: Int
     ) {
-        if (HelperClass.isValidDate(date)
-        ) {
-            _coroutineScope.launch(_errorHandler) {
-                _resultList = _authRepository.addTraining(date)
-                _snackbarMessageObserver.value = _resultList.success
-                Timber.i("Training added: " + _resultList.success)
-            }
-        } else {
-            _snackbarMessageObserver.setValue("Please add a date")
+        //, hour: Int, minute: Int, duration: Double
+        //var formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
+
+        val date: String = "$year-$month-$day"
+        //val time: String = "$hour-$minute"
+        // if (HelperClass.isValidDate(date) ) {
+        _coroutineScope.launch(_errorHandler) {
+            _resultList = _authRepository.addTraining(date, time = "16:50", duration = 5.0)
+            _snackbarMessageObserver.value = _resultList.success
+            Timber.i("Training added: " + _resultList.success)
         }
+        // } else {
+        _snackbarMessageObserver.value = "Please add a date"
+
         getAllTrainings()
     }
 

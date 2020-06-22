@@ -41,10 +41,10 @@ object UserRepo {
     }
 
     suspend fun addTraining(
-        date: String
+        date: String, time: String, duration: Double
     ): DefaultResponse {
         return USER_DAO.addTraining(
-            date
+            date, time, duration
         )
     }
 
