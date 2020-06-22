@@ -9,5 +9,5 @@ data class PlayerResponse(val firstname: String, val lastname: String) {
     }
 }
 
-data class TrainingResponse(val date: String)
+data class TrainingResponse(val date: String, val time: String)
 

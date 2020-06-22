@@ -27,7 +27,7 @@ class TrainingAdapter(private val trainingList: List<TrainingResponse>) :
         val currentItem = trainingList[position]
 
         holder.date.text = currentItem.date
-
+        holder.time.text = currentItem.time
         //wäre das gleiche aber würde jedes mal findViewById aufrufen, anstatt die gecachten vom VIewHOlder zu holen
         //holder.firstname.playerFirstName_Cardview.text = currentItem.firstname
     }
@@ -36,6 +36,8 @@ class TrainingAdapter(private val trainingList: List<TrainingResponse>) :
         //TODO image ressource files müssten hier dann auch gesetzt werden
         val date: TextView =
             itemView.trainingsDateCardTextview //itemView. = synthetic property, same as findFiewByID
+        val time: TextView = itemView.trainingsTimeCardTextview
+
 
     }
 }

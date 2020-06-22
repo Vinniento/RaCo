@@ -54,6 +54,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addTrainingTextview" />
 
+        <TextView
+            android:id="@+id/trainingsTimeTextview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="136dp"
+            android:background="@drawable/background_for_input_dark"
+            android:hint="Date and Time"
+            android:imeOptions="actionDone"
+            android:importantForAutofill="no"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="@color/colorTextHint"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.862"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addTrainingTextview" />
+
         <Button
             android:id="@+id/buttonAddTraining"
             android:layout_width="wrap_content"

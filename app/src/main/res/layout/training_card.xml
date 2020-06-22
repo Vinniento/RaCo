@@ -30,6 +30,19 @@
             android:text="Training Date"
             android:textAlignment="viewStart" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/trainingsTimeCardTextview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/trainingsDateCardTextview"
+            android:layout_alignEnd="@+id/trainingsDateCardTextview"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="-14dp"
+            android:layout_toEndOf="@id/playerLogo"
+            android:text="Training Time"
+            android:textAlignment="viewStart" />
+
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

@@ -75,7 +75,7 @@ class AddTrainingsFragment : Fragment() {
                         day = dayOfMonth
                         year = yearDialog
                         month = monthOfYear
-                        trainingsDateTextview.text = "$yearDialog-$month-$day"
+                        trainingsDateTextview.text = "$yearDialog-$monthOfYear-$dayOfMonth"
 
                     },
                     year,
