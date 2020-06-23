@@ -13,6 +13,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.*
 import timber.log.Timber
+import java.time.format.DateTimeFormatter
 
 class AddTrainingViewModel(application: Application) : AndroidViewModel(application) {
     private val _authRepository = UserRepo
@@ -44,8 +45,8 @@ class AddTrainingViewModel(application: Application) : AndroidViewModel(applicat
         year: Int, month: Int, day: Int, hour: Int, minute: Int
     ) {
         //, , duration: Double
-        //var formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
-
+        var formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+        //TODO erstellen und validaten mit builder
         val date: String = "$year-$month-$day"
         val time: String = "$hour:$minute"
         // if (HelperClass.isValidDate(date) ) {

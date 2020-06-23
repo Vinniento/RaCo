@@ -29,20 +29,23 @@
             android:id="@+id/addTrainingTextview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="Add Training to calender"
             android:textColor="@android:color/black"
             android:textSize="24sp"
-            app:layout_constraintTop_toTopOf="@+id/view"
-            tools:layout_editor_absoluteX="42dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view" />
+
 
         <TextView
             android:id="@+id/trainingsDateTextview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
             android:background="@drawable/background_for_input_dark"
-            android:hint="Date and Time"
+            android:hint="Date"
             android:imeOptions="actionDone"
             android:importantForAutofill="no"
             android:paddingStart="15dp"
@@ -50,7 +53,8 @@
             android:textColor="@android:color/white"
             android:textColorHint="@color/colorTextHint"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/trainingsTimeTextview"
+            app:layout_constraintHorizontal_bias="0.51"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addTrainingTextview" />
 
@@ -58,9 +62,9 @@
             android:id="@+id/trainingsTimeTextview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="136dp"
+            android:layout_marginEnd="100dp"
             android:background="@drawable/background_for_input_dark"
-            android:hint="Date and Time"
+            android:hint="Time"
             android:imeOptions="actionDone"
             android:importantForAutofill="no"
             android:paddingStart="15dp"
@@ -68,38 +72,38 @@
             android:textColor="@android:color/white"
             android:textColorHint="@color/colorTextHint"
             android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/trainingsDateTextview"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.862"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addTrainingTextview" />
+            app:layout_constraintTop_toTopOf="@+id/trainingsDateTextview"
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/buttonAddTraining"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_width="200dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="25dp"
             android:background="@drawable/background_for_button_in_navigation_drawer"
             android:text="Add Training"
             android:textAllCaps="false"
             android:textColor="@color/colorPrimaryLogin"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/trainingsDateTextview" />
 
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/training_recyclerview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="10dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonAddTraining"
-            app:layout_constraintVertical_bias="0.0"
             tools:listitem="@layout/training_card" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="10dp"
+    android:layout_marginStart="70dp"
     android:layout_marginTop="25dp"
-    android:layout_marginEnd="10dp"
+    android:layout_marginEnd="70dp"
     android:layout_marginBottom="-10dp"
     app:cardBackgroundColor="@color/playerCard">
 
@@ -15,33 +15,30 @@
         android:layout_gravity="center">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/playerLogo"
+            android:id="@+id/trainingLogo"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_margin="8dp"
-            android:src="@drawable/ic_player_foto_foreground" />
+            android:src="@drawable/ic_training_foreground" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/trainingsDateCardTextview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toEndOf="@id/playerLogo"
-            android:text="Training Date"
+            android:layout_marginLeft="25dp"
+            android:layout_toEndOf="@id/trainingLogo"
+            android:text="Date"
             android:textAlignment="viewStart" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/trainingsTimeCardTextview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/trainingsDateCardTextview"
-            android:layout_alignEnd="@+id/trainingsDateCardTextview"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="13dp"
-            android:layout_marginEnd="-14dp"
-            android:layout_toEndOf="@id/playerLogo"
-            android:text="Training Time"
-            android:textAlignment="viewStart" />
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="10dp"
+            android:layout_toEndOf="@id/trainingsDateCardTextview"
+            android:text="Time" />
 
 
     </RelativeLayout>
