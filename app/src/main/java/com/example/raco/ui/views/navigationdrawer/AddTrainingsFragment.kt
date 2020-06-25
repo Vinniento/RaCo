@@ -2,6 +2,7 @@ package com.example.raco.ui.views.navigationdrawer
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.icu.text.SimpleDateFormat
 import android.icu.util.Calendar
 import android.os.Build
 import android.os.Bundle
@@ -21,6 +22,7 @@ import com.example.raco.ui.viewmodels.AddTrainingViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_add_trainings.*
 import timber.log.Timber
+import java.util.*
 
 class AddTrainingsFragment : Fragment() {
 
@@ -28,6 +30,10 @@ class AddTrainingsFragment : Fragment() {
     private lateinit var _viewModel: AddTrainingViewModel
     private lateinit var _datePickerDialog: DatePickerDialog
     private lateinit var _timePickerDialog: TimePickerDialog
+
+    @RequiresApi(Build.VERSION_CODES.N)
+    private val dateFormat = SimpleDateFormat("dd MMM, YYYY", Locale.GERMAN)
+
     var day = 0
     var month: Int = 0
     var year: Int = 0
@@ -66,25 +72,29 @@ class AddTrainingsFragment : Fragment() {
         //OnClicks
         //TODO hier evtl gleich ein ganzes user objekt übergeben?
         _binding.trainingsDateTextview.setOnClickListener {
+            val currentDate = Calendar.getInstance()
 
-            val calendar: Calendar = Calendar.getInstance()
-            day = calendar.get(Calendar.DAY_OF_MONTH)
-            month = calendar.get(Calendar.MONTH)
-            year = calendar.get(Calendar.YEAR)
             _datePickerDialog =
                 DatePickerDialog(
                     requireActivity(),
                     DatePickerDialog.OnDateSetListener { view, yearDialog, monthOfYear, dayOfMonth ->
+                        //TODO date formaten auslagern in helper class function?
+                        val selectedDate = Calendar.getInstance()
+                        selectedDate.set(Calendar.YEAR, yearDialog)
+                        selectedDate.set(Calendar.MONTH, monthOfYear)
+                        selectedDate.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+
+                        val date = dateFormat.format(selectedDate.time)
 
                         day = dayOfMonth
                         year = yearDialog
-                        month = monthOfYear
-                        trainingsDateTextview.text = "$yearDialog-$monthOfYear-$dayOfMonth"
+                        month = monthOfYear + 1
+                        trainingsDateTextview.text = "Date: $date"
 
                     },
-                    year,
-                    month,
-                    day
+                    currentDate.get(Calendar.YEAR),
+                    currentDate.get(Calendar.MONTH),
+                    currentDate.get(Calendar.DAY_OF_MONTH)
                 )
 
             _datePickerDialog.show()
@@ -99,10 +109,14 @@ class AddTrainingsFragment : Fragment() {
                 TimePickerDialog(
                     requireActivity(),
                     TimePickerDialog.OnTimeSetListener { view, hourDialog, minuteDialog ->
-
+                        val selectedTime = Calendar.getInstance()
+                        selectedTime.set(Calendar.HOUR_OF_DAY, hourDialog)
+                        selectedTime.set(Calendar.MINUTE, minuteDialog)
+                        val timeFormat = SimpleDateFormat("HH:mm").format(selectedTime.time)
                         hour = hourDialog
                         minute = minuteDialog
-                        trainingsTimeTextview.text = "$hourDialog:$minuteDialog"
+                        trainingsTimeTextview.text =
+                            "$timeFormat"
                     },
                     year,
                     month,

@@ -19,7 +19,6 @@ class LoginViewModel : ViewModel() {
 
     private val _loginJob = Job()
 
-
     private val _snackbarMessageObserver = MutableLiveData<String>()
     val snackbarMessageObserver: LiveData<String>
         get() = _snackbarMessageObserver
@@ -37,7 +36,6 @@ class LoginViewModel : ViewModel() {
     private val _errorHandler = CoroutineExceptionHandler { _, throwable ->
         Timber.e(throwable.message.toString())
     }
-
 
     private suspend fun getLoginData(email: String, password: String) {
         /*return withContext(Dispatchers.Main) {
@@ -61,7 +59,6 @@ class LoginViewModel : ViewModel() {
         } else
             _snackbarMessageObserver.value = "Email or password are in invalid format"
     }
-
 
     private fun checkUserCredentialsValidity(inputEmail: String, inputPassword: String): Boolean {
         return (HelperClass.isValidEmail(inputEmail) && inputPassword.length >= 8)

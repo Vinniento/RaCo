@@ -18,28 +18,34 @@
             android:id="@+id/trainingLogo"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_margin="8dp"
             android:src="@drawable/ic_training_foreground" />
+
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/trainingsDateCardTextview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="25dp"
+            android:layout_alignTop="@+id/trainingLogo"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="0dp"
             android:layout_toEndOf="@id/trainingLogo"
-            android:text="Date"
+            android:text="Training Date"
             android:textAlignment="viewStart" />
+
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/trainingsTimeCardTextview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="10dp"
-            android:layout_toEndOf="@id/trainingsDateCardTextview"
-            android:text="Time" />
-
+            android:layout_alignEnd="@+id/trainingsDateCardTextview"
+            android:layout_alignBottom="@+id/trainingLogo"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="-17dp"
+            android:layout_marginBottom="0dp"
+            android:layout_toEndOf="@id/trainingLogo"
+            android:text="Training Time"
+            android:textAlignment="viewStart" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

@@ -1,12 +1,15 @@
 package com.example.raco.ui
 
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.raco.R
 import com.example.raco.models.TrainingResponse
+import com.example.raco.utilities.HelperClass
 import kotlinx.android.synthetic.main.training_card.view.*
 
 class TrainingAdapter(private val trainingList: List<TrainingResponse>) :
@@ -23,11 +26,31 @@ class TrainingAdapter(private val trainingList: List<TrainingResponse>) :
 
     override fun getItemCount() = trainingList.size
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: TrainingViewHolder, position: Int) {
         val currentItem = trainingList[position]
 
-        holder.date.text = currentItem.date
-        holder.time.text = currentItem.time
+        //Bonus für hässlichkeit :D
+        /*  var year: MutableList<Char> = mutableListOf()
+          var month: MutableList<Char> = mutableListOf()
+          var day: MutableList<Char> = mutableListOf()
+
+          var counter = 0
+          currentItem.date.toCharArray().forEachIndexed { index, c ->
+              if (!c.equals('-') && counter == 0) {
+                  year.add(c)
+              } else if (c.equals('-'))
+                  counter++
+              else if (!c.equals('-') && counter == 1)
+                  month.add(c)
+              else if (!c.equals('-') && counter == 2)
+                  day.add(c)
+          }*/
+
+
+
+        holder.date.text = "Date: ${HelperClass.parseDateFromJson(currentItem.date)}"
+        holder.time.text = "Time: ${HelperClass.parseTimeFromJson(currentItem.time)}"
         //wäre das gleiche aber würde jedes mal findViewById aufrufen, anstatt die gecachten vom VIewHOlder zu holen
         //holder.firstname.playerFirstName_Cardview.text = currentItem.firstname
     }
