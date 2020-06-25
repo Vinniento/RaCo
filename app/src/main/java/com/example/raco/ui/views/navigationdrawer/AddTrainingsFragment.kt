@@ -102,9 +102,10 @@ class AddTrainingsFragment : Fragment() {
 
         _binding.trainingsTimeTextview.setOnClickListener {
 
-            val calendar: Calendar = Calendar.getInstance()
-            hour = calendar.get(Calendar.HOUR)
-            minute = calendar.get(Calendar.MINUTE)
+            val currentTime: Calendar = Calendar.getInstance()
+            hour = currentTime.get(Calendar.HOUR)
+            minute = currentTime.get(Calendar.MINUTE)
+
             _timePickerDialog =
                 TimePickerDialog(
                     requireActivity(),
@@ -118,13 +119,14 @@ class AddTrainingsFragment : Fragment() {
                         trainingsTimeTextview.text =
                             "$timeFormat"
                     },
-                    year,
-                    month,
+                    currentTime.get(Calendar.HOUR_OF_DAY),
+                    currentTime.get(Calendar.MINUTE),
                     true
                 )
 
             _timePickerDialog.show()
         }
+
         _viewModel.snackbarMessageObserver.observe(viewLifecycleOwner, Observer {
             Snackbar.make(
                 requireActivity().findViewById(android.R.id.content),

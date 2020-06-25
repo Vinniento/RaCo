@@ -34,6 +34,9 @@ interface UserDao {
     @GET("getallplayers")
     suspend fun getAllPlayers(): List<PlayerResponse>
 
+    @GET("getuser")
+    suspend fun getUser(@Query("email") email: String): PlayerResponse
+
     //TODO password gleich einfügen oder leer lassen bis player sich anmeldet?
     @POST("addtraining")
     suspend fun addTraining(

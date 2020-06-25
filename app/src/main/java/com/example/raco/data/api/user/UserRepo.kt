@@ -52,4 +52,8 @@ object UserRepo {
         return USER_DAO.getAllTrainings()
     }
 
+    suspend fun getUser(email: String): PlayerResponse {
+        return USER_DAO.getUser(email)
+    }
+
 }

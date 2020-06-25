@@ -16,8 +16,6 @@ import timber.log.Timber
  */
 class ResetPasswordFragment : Fragment() {
     private lateinit var viewModel: ResetPasswordViewModel
-
-    // private lateinit var drawerInterface: DrawerInterface
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,16 +36,9 @@ class ResetPasswordFragment : Fragment() {
         return binding.root
     }
 
-    /*  override fun onAttach(context: Context) {
-          super.onAttach(context)
-          drawerInterface = context as DrawerInterface
-
-      }*/
     override fun onResume() {
         super.onResume()
         Timber.i("onResume called")
-        //  drawerInterface.closeDrawer()
-
     }
 
     override fun onStart() {
@@ -68,7 +59,6 @@ class ResetPasswordFragment : Fragment() {
     override fun onStop() {
         super.onStop()
         Timber.i("onStopCalled")
-        //   drawerInterface.openDrawer()
 
     }
 

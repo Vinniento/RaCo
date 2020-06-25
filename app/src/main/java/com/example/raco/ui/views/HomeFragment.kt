@@ -1,22 +1,15 @@
 package com.example.raco.ui.views
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.raco.DrawerInterface
 import com.example.raco.R
 import timber.log.Timber
 
 class HomeFragment : Fragment() {
-    private lateinit var _drawerInterface: DrawerInterface
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        _drawerInterface = context as DrawerInterface
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,8 +23,6 @@ class HomeFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         Timber.i("onResume called")
-        _drawerInterface.openDrawer()
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

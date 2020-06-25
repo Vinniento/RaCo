@@ -57,7 +57,7 @@ class LoginViewModel : ViewModel() {
                 Timber.i(resultState.success)
             }
         } else
-            _snackbarMessageObserver.value = "Email or password are in invalid format"
+            _snackbarMessageObserver.value = "Email or password are in invalid format or empty"
     }
 
     private fun checkUserCredentialsValidity(inputEmail: String, inputPassword: String): Boolean {

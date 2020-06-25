@@ -38,6 +38,5 @@ class PlayerAdapter(private val playerList: List<PlayerResponse>) :
         val firstname: TextView =
             itemView.playerFirstName_Cardview //itemView. = synthetic property, same as findFiewByID
         val lastname: TextView = itemView.playerLastName_Cardview
-
     }
 }

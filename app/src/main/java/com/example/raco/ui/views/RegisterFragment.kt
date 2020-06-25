@@ -23,7 +23,6 @@ class RegisterFragment : Fragment() {
 
     private lateinit var binding: FragmentRegisterBinding
     private lateinit var _viewModel: RegisterViewModel
-    //  private lateinit var drawerInterface: DrawerInterface
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -81,7 +80,6 @@ class RegisterFragment : Fragment() {
                 spinnerCountries.adapter = adapter
             }
         }
-        //  drawerInterface.closeDrawer()
         _viewModel.snackbarMessageObserver.observe(viewLifecycleOwner, Observer {
             Snackbar.make(
                 requireActivity().findViewById(android.R.id.content),
@@ -91,11 +89,6 @@ class RegisterFragment : Fragment() {
     }
 
 
-    /* override fun onAttach(context: Context) {
-         super.onAttach(context)
-         drawerInterface = context as DrawerInterface
-
-     }*/
     override fun onResume() {
         super.onResume()
         Timber.i("onResume called")

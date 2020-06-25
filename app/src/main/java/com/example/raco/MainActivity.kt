@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -11,6 +13,8 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.raco.databinding.ActivityMainBinding
+import com.example.raco.ui.viewmodels.SharedViewModelUser
+import kotlinx.android.synthetic.main.nav_drawer_header.view.*
 
 class MainActivity : AppCompatActivity(), DrawerInterface
 /* NavigationView.OnNavigationItemSelectedListener */ {
@@ -19,11 +23,28 @@ class MainActivity : AppCompatActivity(), DrawerInterface
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
+    private lateinit var _sharedViewModel: SharedViewModelUser
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         drawerLayout = binding.drawerLayout
 
+        _sharedViewModel = ViewModelProvider(this).get(SharedViewModelUser::class.java)
+
+        //TODO ist das not good?
+        if (_sharedViewModel.loggedInUser.value == null) {
+            closeDrawer()
+            actionBar?.hide()
+        } else
+            actionBar?.show()
+
+        _sharedViewModel.loggedInUser.observe(this, Observer {
+            if (it != null) {
+                drawerLayout.drawerFirstname.text = "${it.firstname} ${it.lastname}"
+                drawerLayout.drawerEmail.text = it.email
+            }
+        })
         navController = this.findNavController(R.id.nav_host_fragment)
         //set the fragments that should implement the drawer menu
         val topLevelDestinations = setOf(
@@ -34,6 +55,7 @@ class MainActivity : AppCompatActivity(), DrawerInterface
             R.id.settingsFragment,
             R.id.logoutFragment
         )
+
 
         //set multiple top-level destinations so that menu drawer is shown in that fragments
         // JVM > 1.8 use:
@@ -79,5 +101,10 @@ class MainActivity : AppCompatActivity(), DrawerInterface
     override fun closeDrawer() {
         drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
 
+    }
+
+    override fun changeHeaderFields(email: String?, firstname: String, lastname: String) {
+        drawerLayout.drawerEmail.text = email
+        drawerLayout.drawerFirstname.text = "$firstname $lastname"
     }
 }
