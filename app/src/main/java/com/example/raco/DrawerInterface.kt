@@ -5,5 +5,5 @@ interface DrawerInterface {
     fun closeDrawer()
 
     //TODO was passiert wenn kein string als input?
-    fun changeHeaderFields(email: String?, firstname: String, lastname: String)
+    fun changeHeaderFields(email: String, firstname: String, lastname: String)
 }

@@ -41,9 +41,10 @@ class MainActivity : AppCompatActivity(), DrawerInterface
                 drawerLayout.drawerFirstname.text = "${it.firstname} ${it.lastname}"
                 drawerLayout.drawerEmail.text = it.email
                 hideKeyboard()
-                actionBar?.show()
+                //TODO verstehen was "this as App..." genau macht
+                (this as AppCompatActivity).supportActionBar?.show()
             } else {
-                actionBar?.hide()
+                (this as AppCompatActivity).supportActionBar?.hide()
                 closeDrawer()
             }
         })
@@ -123,7 +124,8 @@ class MainActivity : AppCompatActivity(), DrawerInterface
             getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
-    override fun changeHeaderFields(email: String?, firstname: String, lastname: String) {
+
+    override fun changeHeaderFields(email: String, firstname: String, lastname: String) {
         drawerLayout.drawerEmail.text = email
         drawerLayout.drawerFirstname.text = "$firstname $lastname"
     }

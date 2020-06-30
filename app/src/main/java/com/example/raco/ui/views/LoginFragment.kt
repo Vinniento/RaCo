@@ -42,7 +42,6 @@ class LoginFragment : Fragment() {
         )
         Timber.i("onCreateView called")
         _viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
-
         binding.loginViewModel = _viewModel
         // binding.setLifecycleOwner(this) TODO hereausfinden wieso er das nicht akzeptiert
 //navigation onClicks
@@ -82,10 +81,13 @@ class LoginFragment : Fragment() {
 //button_login.isEnabled = viewModel.isUserCredentialsValid("schauerv@gmail.com", "dfdfdfdfdfd")
 
         changeWelcomeTextColour()
-        setHasOptionsMenu(true)
+        //  setHasOptionsMenu(true)
+
+
 
         return binding.root
     }
+
 
     //TODO zum laufen bringen
     fun changeWelcomeTextColour() {  // Text to set the TextView
