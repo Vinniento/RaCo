@@ -4,21 +4,20 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.raco.data.api.user.UserRepo
-import com.example.raco.models.DefaultResponse
 import com.example.raco.models.PlayerResponse
 import kotlinx.coroutines.*
 import timber.log.Timber
 
 class SharedViewModelUser : ViewModel() {
     private val _authRepository = UserRepo
-    private lateinit var _defaultResponse: DefaultResponse
 
     private val _loggedInUser = MutableLiveData<PlayerResponse>()
     val loggedInUser: LiveData<PlayerResponse>
         get() = _loggedInUser
 
     init {
-        Timber.i("HomeViewModel created")
+        _loggedInUser.value = null
+        Timber.i("SharedViewModelUser created")
     }
 
     private val _getUserJob = Job()
@@ -26,7 +25,7 @@ class SharedViewModelUser : ViewModel() {
 
     override fun onCleared() {
         super.onCleared()
-        Timber.i("HomeViewModel destroyed")
+        Timber.i("SharedViewModelUser destroyed")
     }
 
     private val _errorHandler = CoroutineExceptionHandler { _, throwable ->
