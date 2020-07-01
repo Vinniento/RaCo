@@ -18,7 +18,6 @@ import com.example.raco.R
 import com.example.raco.databinding.FragmentLoginBinding
 import com.example.raco.ui.viewmodels.SharedViewModelUser
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.fragment_login.*
 import timber.log.Timber
 
 /**
@@ -57,8 +56,9 @@ class LoginFragment : Fragment() {
 
         _viewModel.loginState.observe(this.viewLifecycleOwner, Observer {
             if (it.success == "valid") {
-                _sharedViewModel.getUser(inputEmail.text.toString())
+                _sharedViewModel.getUser("email@gmail.com")
                 findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+
             }
         })
         _viewModel.snackbarMessageObserver.observe(viewLifecycleOwner, Observer {
@@ -69,10 +69,15 @@ class LoginFragment : Fragment() {
         })
 //functional onClicks
         binding.buttonSignIn.setOnClickListener {
-            //TODO hier binding.email oder nur email?
+//            //TODO hier binding.email oder nur email?
+//            _viewModel.login(
+//                inputEmail.text.toString(),
+//                inputPassword.text.toString()
+//            )
+
             _viewModel.login(
-                inputEmail.text.toString(),
-                inputPassword.text.toString()
+                "email@gmail.com",
+                "password"
             )
             Timber.i("login called")
         }
@@ -80,7 +85,6 @@ class LoginFragment : Fragment() {
 //TODO observe livedata
 //button_login.isEnabled = viewModel.isUserCredentialsValid("schauerv@gmail.com", "dfdfdfdfdfd")
 
-        changeWelcomeTextColour()
         //  setHasOptionsMenu(true)
 
 
@@ -90,6 +94,7 @@ class LoginFragment : Fragment() {
 
 
     //TODO zum laufen bringen
+    @Override
     fun changeWelcomeTextColour() {  // Text to set the TextView
         val mText = "Welcome to RaCo"
 
@@ -116,6 +121,8 @@ class LoginFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        changeWelcomeTextColour()
+
         Timber.i("onResume called")
 
     }

@@ -45,6 +45,7 @@ class MainActivity : AppCompatActivity(), DrawerInterface
                 (this as AppCompatActivity).supportActionBar?.show()
             } else {
                 (this as AppCompatActivity).supportActionBar?.hide()
+
                 closeDrawer()
             }
         })
@@ -98,6 +99,16 @@ class MainActivity : AppCompatActivity(), DrawerInterface
     }
 
     override fun onBackPressed() {
+        /* if(_sharedViewModel.loggedInUser.value != null) {
+             AlertDialog.Builder(this)
+                 .setIcon(android.R.drawable.ic_dialog_alert)
+                 .setTitle("Leave Raco")
+                 .setMessage("Are you sure you want to leave the app?")
+                 .setPositiveButton("Yes", DialogInterface.OnClickListener() {
+                         dialog, which ->  finish()})
+                 .setNegativeButton("No", null)
+                 .show()
+         }*/
         super.onBackPressed()
         drawerLayout.closeDrawers()
 

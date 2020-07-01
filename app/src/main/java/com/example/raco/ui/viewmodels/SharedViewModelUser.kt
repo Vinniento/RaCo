@@ -36,8 +36,8 @@ class SharedViewModelUser : ViewModel() {
         //only fetch user if doesn't exist - vl eh unnötig weil das schon gehandelt wird
         //if (_loggedInUser.value != null) {
         CoroutineScope(Dispatchers.Main + _getUserJob).launch(_errorHandler) {
-            val resultState = _authRepository.getUser(email)
-            _loggedInUser.value = resultState
+            _loggedInUser.value = _authRepository.getUser(email)
+
             Timber.i("User = " + _loggedInUser.value.toString())
         }
         // }
