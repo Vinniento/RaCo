@@ -109,10 +109,10 @@ class MainActivity : AppCompatActivity(), DrawerInterface
                  .setNegativeButton("No", null)
                  .show()
         } else {
-            finish()
+            // finish()
+            super.onBackPressed()
         }
         drawerLayout.closeDrawers()
-
     }
 
     override fun openDrawer() {

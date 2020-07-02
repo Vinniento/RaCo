@@ -18,6 +18,7 @@ import com.example.raco.R
 import com.example.raco.databinding.FragmentLoginBinding
 import com.example.raco.ui.viewmodels.SharedViewModelUser
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.fragment_login.*
 import timber.log.Timber
 
 /**
@@ -69,15 +70,10 @@ class LoginFragment : Fragment() {
         })
 //functional onClicks
         binding.buttonSignIn.setOnClickListener {
-//            //TODO hier binding.email oder nur email?
-//            _viewModel.login(
-//                inputEmail.text.toString(),
-//                inputPassword.text.toString()
-//            )
-
+            //TODO hier binding.email oder nur email?
             _viewModel.login(
-                "email@gmail.com",
-                "password"
+                inputEmail.text.toString(),
+                inputPassword.text.toString()
             )
             Timber.i("login called")
         }
