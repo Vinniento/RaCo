@@ -1,6 +1,7 @@
 package com.example.raco
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.view.View
@@ -99,17 +100,17 @@ class MainActivity : AppCompatActivity(), DrawerInterface
     }
 
     override fun onBackPressed() {
-        /* if(_sharedViewModel.loggedInUser.value != null) {
+        if (_sharedViewModel.loggedInUser.value != null) {
              AlertDialog.Builder(this)
                  .setIcon(android.R.drawable.ic_dialog_alert)
                  .setTitle("Leave Raco")
                  .setMessage("Are you sure you want to leave the app?")
-                 .setPositiveButton("Yes", DialogInterface.OnClickListener() {
-                         dialog, which ->  finish()})
+                 .setPositiveButton("Yes") { dialog, which -> finish() }
                  .setNegativeButton("No", null)
                  .show()
-         }*/
-        super.onBackPressed()
+        } else {
+            finish()
+        }
         drawerLayout.closeDrawers()
 
     }
