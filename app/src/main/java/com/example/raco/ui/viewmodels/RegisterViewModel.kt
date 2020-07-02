@@ -53,6 +53,6 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
     }
 
     private fun checkCredentialsValidity(email: String, pass1: String, pass2: String): Boolean {
-        return pass1 == pass2 && HelperClass.isValidEmail(email)
+        return pass1.length > 7 && pass1 == pass2 && HelperClass.isValidEmail(email)
     }
 }
